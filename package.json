@@ -1,0 +1,56 @@
+{
+  "name": "grunt-tx",
+  "description": "Grunt tasks to download translations & upload resources from/to Transifex",
+  "version": "0.0.0-semantically-released",
+  "homepage": "https://github.com/eHealthAfrica/grunt-tx",
+  "author": {
+    "name": "Robin Mehner",
+    "email": "robin@coding-robin.de",
+    "url": "coding-robin.de"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/eHealthAfrica/grunt-tx.git"
+  },
+  "bugs": {
+    "url": "https://github.com/eHealthAfrica/grunt-tx/issues"
+  },
+  "license": "Apache 2.0",
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "build": "npm run clean && babel -d ./ ./src",
+    "clean": "rm -Rf ./lib/ ./tasks ./spec/*.js",
+    "lint": "eslint ./src/",
+    "postpublish": "semantic-release post",
+    "prepublish": "npm run build && semantic-release pre",
+    "test": "npm run build && mocha spec",
+    "watch": "npm run build -- --watch"
+  },
+  "devDependencies": {
+    "babel": "^5.5.6",
+    "babel-eslint": "^3.1.14",
+    "chai": "^3.0.0",
+    "eslint": "^0.22.1",
+    "grunt": "~0.4.5",
+    "mocha": "^2.2.5",
+    "semantic-release": "^3.3.1",
+    "sinon": "^1.14.1",
+    "source-map-support": "^0.3.1"
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.5"
+  },
+  "keywords": [
+    "grunt",
+    "transifex",
+    "translation",
+    "i18n"
+  ],
+  "dependencies": {
+    "inquirer": "^0.8.5",
+    "keytar": "^2.1.0",
+    "node-fetch": "^1.2.1"
+  }
+}

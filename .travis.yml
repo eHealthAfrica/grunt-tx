@@ -1,0 +1,38 @@
+language: node_js
+node_js:
+  - iojs-v2
+  - iojs-v1
+  - '0.10'
+  - '0.12'
+sudo: false
+cache:
+  directories:
+  - node_modules
+before_install:
+  - npm i -g npm@^2.0.0
+before_script:
+  - npm prune
+  - curl -Lo travis_after_all.py https://raw.github.com/dmakhno/travis_after_all/master/travis_after_all.py
+after_success:
+  - python travis_after_all.py
+  - export $(cat .to_export_back)
+after_failure:
+  - python travis_after_all.py
+  - export $(cat .to_export_back)
+before_deploy:
+  - rm -f travis_after_all.py .to_export_back
+after_script:
+  - echo leader=$BUILD_LEADER status=$BUILD_AGGREGATE_STATUS
+deploy:
+  provider: npm
+  email: oss@ehealthafrica.org
+  skip_cleanup: true
+  api_key:
+    secure: ova7lNAmPGGOsUNT/bv7GXMjYautoXO7xrce61GCxeu6/Id3NJduCY3Q1TB51ZJQNPzxjbK15S+cWTE1Ji5CSORatXd8x7HJ4kF7tNgir7B1/Bkq7ez1OW5xy+QQyDwR+dVPc/Z/YXcHS9jSlKIHfSq370Fhq52n9tCLvb1BLUApU9idAEih15g4NFEXRVFxx2pDKkUuhevDAJYEMq28auqT017uIHQAP2c32Z7SXpnutvkxU3uoktJvGsKJnEgwY0Q+vNhU7o7xPHfQ1Ze/xKFjTHXmwD9/i47ug5TS4X2EZU1BWjXn887abMttJrepIyEdMo0TsXcuiChn83WqCLpw1jSeIQEXolypFZkuNc/tz8DL0xVc9xjlNtH6XKc0XD6xr+6NlebAIReeQjv4f9pIZG4tL0gqto9F54OKuPpT+Wa3guCDYUe5OIwU33KgZ1rl3k1cRs44P2jlmQfO8n+h399FOr2iafW9Pr911nPwgQMxO/YfN0S1GOE1rogV9jM9RO6g1Fn0jcb5RVu83+wL3N6tWok7bCMS5jHFsYsbs5loqTBa5OUZopahwKqj2ajTFkLR6agfwkCPkdIXRhgp6R66Q8J0QRCXP+iqVYL8Zm8HWMl9t+aOP3b7oJekC089/PlRasR0H7zsooY96p6PcJiMqCfL8qt71hJNrSw=
+  on:
+    branch: master
+    repo: eHealthAfrica/grunt-tx
+    condition: "$BUILD_LEADER$BUILD_AGGREGATE_STATUS = YESothers_succeeded"
+env:
+  global:
+    secure: V2s8KUVR9lSVMObbGSgXXsGZs/iwNYmlBNQtzA7y4SqAs24X615xYZQNKDGKPdQppBOdubXXDdmyHeCL+2kKuAqLSluGKISGbD+dYC0wGPcncxHCiuwGzXdkYmO7d5EV6i6cz5P37kgEK3VJbSZ9u2kPpiYELU256muKsYisle2PlmFyL/Ox4r2B73jRXtAaYZCF0GyE2XHngsK5WqYWN3nTlg4YedDaVP1pj+DfmwHx2+E3vbQOA+CkK3vPCY1d7WhxjtaW4G0tq11Tg1L+PLkudGJqScllpcO9qvhjbKAGh8/oo4keCDYr19rP+rqr+WfIUO4EMqT18FSeHuYdhWdjGe2l5grTFRJdYIhcKVDgS8r/IlNSMuXP30CMEL3iDmAPfqKim0m5tXJ4YZfsCNBbn1MdtR1DEL2zQmGxApQLt+FU1bbtQBV7Qozyj9DtIciGIiZKUu0M9GPomxGMlBJEJF8Mbl9fLMCkNu+ydULQo0MQB3Nzl1KDXCbU7E36TlqxiBD54DK92rilbpN2mDbUeb65pfOsVaKDdsGOr7EWK5sXpul7Jkdr+VsgxclmZDV0YlZPjRRzAeBMVVGVCTy12Jr6xx7CdhCAWCt6/0tRjXGURRyHZRUysPT2Lh5xh/licEuv9PhU3rcjV+qfdFmgXvHUw2N8gAii3WVvIH4=
