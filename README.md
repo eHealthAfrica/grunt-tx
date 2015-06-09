@@ -77,6 +77,10 @@ Run `npm run build`. Build output will be in `lib` and `tasks` directories. Duri
 
 `npm test` lints the code and runs the test.
 
+### Conventions
+
+`grunt-tx` is using the wonderful [semantic-release](https://github.com/boennemann/semantic-release) to automate its releases. To make that work, please stick to the [Angular commit guidelines](https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y)
+
 ## Alternatives / Shoutouts
 
 Thank you to:
