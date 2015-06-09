@@ -22,6 +22,9 @@ before_deploy:
   - rm -f travis_after_all.py .to_export_back
 after_script:
   - echo leader=$BUILD_LEADER status=$BUILD_AGGREGATE_STATUS
+env:
+  global:
+  - secure: Q5VaKCSXjYqkgf2fl5t+X8WksNBckCyAiWbjHee48DEsaM+fm4w5lfaosxR0E0azmPfzUbMkjChk7ACIUYzpIKvvx4MuV/3q61SS2eT1GxUWbEpnZr4dpfP8EuTLg3l+Ket+o44e22Npxta9nTHoFMPCiOPVveKtzuNaTpJ9YbQi4+wGm0dsa5SKVQ5Wk7CHUHK9S7/UyjVOhX8SB+qsNx8iruZU7h45XnqMole6SNud6opLBNL4eLuVN+fc2ahKOkeuzj921qcmbDEMO4Hi09KcwHVhjVdM6uZ4GAW7UZLL7dkKKhYrQr1HNi8V+4jY/AuNcZ0kYKzQRViY1s8VEbCnEVRifOSJNo7cRlbo3GJ+F6LFsFbAwg6Hysw+BTVxu2ujOniGal8iYzDR6g5SP5BhQE5dMLeKoOq6mOSukpf/fy4oinoMUdSsY2IdxxoBmtHnRk7WE1UH+2/Nm4waYqk8fHI+R5JGSsehOUK6miL9kIfH5hnlN0tU7EVSo1++xIkYr5k8XfHIZ48+/uI2zN/7ly38AmpJyEYZib20fd3ojeG7+41D4JEislGe3kg3mV6DGkeLPArE20c2UcGvTaR9ehnIY9ml8c96e1DkoeWINV06kmXPAEQOXzP3bkabMxu1pKw+TSnxKF0729SWMid+NC9qwZI/owmayspJ048=
 deploy:
   provider: npm
   email: oss@ehealthafrica.org
@@ -32,6 +35,3 @@ deploy:
     branch: master
     repo: eHealthAfrica/grunt-tx
     condition: "$BUILD_LEADER$BUILD_AGGREGATE_STATUS = YESothers_succeeded"
-env:
-  global:
-    secure: V2s8KUVR9lSVMObbGSgXXsGZs/iwNYmlBNQtzA7y4SqAs24X615xYZQNKDGKPdQppBOdubXXDdmyHeCL+2kKuAqLSluGKISGbD+dYC0wGPcncxHCiuwGzXdkYmO7d5EV6i6cz5P37kgEK3VJbSZ9u2kPpiYELU256muKsYisle2PlmFyL/Ox4r2B73jRXtAaYZCF0GyE2XHngsK5WqYWN3nTlg4YedDaVP1pj+DfmwHx2+E3vbQOA+CkK3vPCY1d7WhxjtaW4G0tq11Tg1L+PLkudGJqScllpcO9qvhjbKAGh8/oo4keCDYr19rP+rqr+WfIUO4EMqT18FSeHuYdhWdjGe2l5grTFRJdYIhcKVDgS8r/IlNSMuXP30CMEL3iDmAPfqKim0m5tXJ4YZfsCNBbn1MdtR1DEL2zQmGxApQLt+FU1bbtQBV7Qozyj9DtIciGIiZKUu0M9GPomxGMlBJEJF8Mbl9fLMCkNu+ydULQo0MQB3Nzl1KDXCbU7E36TlqxiBD54DK92rilbpN2mDbUeb65pfOsVaKDdsGOr7EWK5sXpul7Jkdr+VsgxclmZDV0YlZPjRRzAeBMVVGVCTy12Jr6xx7CdhCAWCt6/0tRjXGURRyHZRUysPT2Lh5xh/licEuv9PhU3rcjV+qfdFmgXvHUw2N8gAii3WVvIH4=
