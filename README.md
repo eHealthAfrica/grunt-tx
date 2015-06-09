@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/eHealthAfrica/grunt-tx.svg?branch=master)](https://travis-ci.org/eHealthAfrica/grunt-tx)
+
 # Grunt-Tx
 
 Grunt tasks to download translations and upload resources to [Transifex](https://www.transifex.com)
