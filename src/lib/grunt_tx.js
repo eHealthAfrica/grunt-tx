@@ -33,19 +33,31 @@ module.exports = class GruntTx {
     this.grunt = grunt
   }
 
+  async availableLanguageCodesFor(resource) {
+    const remoteResource = await this.transifex.getResource(resource.slug)
+    return remoteResource.available_languages.map(function(language) {
+      return language.code
+    })
+  }
+
   async downloadResources() {
     const remoteResources = await this.transifex.getResources()
 
     for (let localResource of this.localResources) {
-      const remoteResourceForLocal = remoteResourceFor(localResource, remoteResources)
-      const remoteResource = await this.transifex.getResource(remoteResourceForLocal.slug)
+      const remoteResource = remoteResourceFor(localResource, remoteResources)
+      const languageCodes = localResource.languages || await this.availableLanguageCodesFor(remoteResource)
 
-      for (let language of remoteResource.available_languages) {
-        const translations = await this.transifex.getTranslations(remoteResource.slug, language.code)
-        const filePath = targetPathFor(localResource, language.code)
+      if (!languageCodes || languageCodes.length === 0) {
+        this.grunt.log.error(`[${this.project}] No languages found for ${localResource.sourceFile}`)
+        continue
+      }
+
+      for (let languageCode of languageCodes) {
+        const translations = await this.transifex.getTranslations(remoteResource.slug, languageCode)
+        const filePath = targetPathFor(localResource, languageCode)
 
         this.grunt.file.write(filePath, translations)
-        this.grunt.log.ok(`[${this.project}] Downloaded ${language.code} to ${filePath}`)
+        this.grunt.log.ok(`[${this.project}] Downloaded ${languageCode} to ${filePath}`)
       }
     }
   }

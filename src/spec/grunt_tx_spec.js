@@ -98,6 +98,23 @@ describe('GruntTx', () => {
       assert(this.grunt.file.write.calledWith('./po/en.po', 'english translations'))
       assert(this.grunt.file.write.calledWith('./po/fr.po', 'french translations'))
     })
+
+    it('only downloads the configured languages', async function() {
+      const localResources = [
+        {
+          sourceFile: './po/template.pot',
+          targetFilePath: './po/_lang_._type_',
+          type: 'PO',
+          languages: ['fr']
+        }
+      ]
+
+      const gruntTx = new GruntTx({project, localResources, transifex: this.transifex, grunt: this.grunt})
+      await gruntTx.downloadResources()
+
+      assert(this.transifex.getTranslations.calledWith('templatepot', 'fr'))
+      assert(this.transifex.getTranslations.neverCalledWith('templatepot', 'en'))
+    })
   })
 
   describe('#uploadResources', () => {

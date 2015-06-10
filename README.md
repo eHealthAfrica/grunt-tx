@@ -40,7 +40,10 @@ grunt.initConfig({
         targetFilePath: './po/_lang_._type_',
         // the i18n_type of your resource at Transifex
         // See http://docs.transifex.com/formats
-        type: 'PO'
+        type: 'PO',
+        // this is completely optional. If not set, we default to download
+        // every available language for the resource
+        languages: ['en', 'fr']
       }
     ]
   },
