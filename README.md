@@ -10,6 +10,10 @@ Grunt tasks to download translations and upload resources to [Transifex](https:/
 * io.js should work as well, we only have to wait for [node-gyp to be compatible](https://github.com/nodejs/io.js/issues/433) (or for the eventual node/io merge)
 * grunt `~0.4.5`
 
+### On Linux
+
+Since we depend on `node-keytar`, you might need to install a package there to make the installation work. Please refer to [their README](https://github.com/atom/node-keytar#on-linux) for instructions.
+
 ## Getting started
 
 In your project run: `npm install --save grunt-tx`.
