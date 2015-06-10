@@ -56,7 +56,7 @@ The plugin accepts `TRANSIFEX_USER` & `TRANSIFEX_PASSWORD` as environment variab
 
 ## Development
 
-You're interested in helping out this project? You rock! Hope this little guide helps you to get started.
+You're interested in helping out this project? You rock! Hope this little guide helps you to get started. If not, just ping us, we're very happy to help!
 
 The module is written in ES2015 with the help of the fantastic [babel](https://babeljs.io). The source code can be found in the [src](src/) directory. It's the only code that you should touch.
 
