@@ -54,6 +54,8 @@ The plugin exposes two tasks:
 
 The plugin accepts `TRANSIFEX_USER` & `TRANSIFEX_PASSWORD` as environment variables. If they're not present, it'll prompt the user for their credentials and stores them in their keychain.
 
+**Note**: if you need to support multiple projects with different credentials, this is totally supported by this plugin. However if you pass in the credentials via ENV, they'll take precedence over everything. This means, if you want to include this plugin into your CI workflow, you'll have to grant access to all projects configured to the user identified by the credentials provided in ENV.
+
 ## Development
 
 You're interested in helping out this project? You rock! Hope this little guide helps you to get started. If not, just ping us, we're very happy to help!
