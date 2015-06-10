@@ -1,6 +1,5 @@
 node_modules
 npm-debug.log
-spec/fixtures/po/*.po
-./lib
-./spec/*.js
-./task/*.js
+*.js
+!src/**/*.js
+*.po
