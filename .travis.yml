@@ -1,4 +1,9 @@
 language: node_js
+sudo: false
+addons:
+  apt:
+    packages:
+      - libgnome-keyring-dev
 node_js:
   - '0.10'
   - '0.12'
@@ -8,7 +13,6 @@ cache:
 before_install:
   - npm i -g npm@^2.0.0
   - npm config set spin false --global
-  - sudo apt-get install libgnome-keyring-dev
 before_script:
   - npm prune
   - curl -Lo travis_after_all.py https://raw.github.com/dmakhno/travis_after_all/master/travis_after_all.py
