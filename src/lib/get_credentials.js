@@ -24,7 +24,7 @@ class Credentials {
   async askFor(attribute, type, message) {
     const questions = [{
       name: attribute,
-      type: type || 'input',
+      type: type,
       message: message,
       validate: isPresent(attribute)
     }]
@@ -46,7 +46,7 @@ class Credentials {
       return username
     }
 
-    username = await this.askFor('username', `What is the username for ${this.project} on Transifex?`)
+    username = await this.askFor('username', 'input', `What is the username for ${this.project} on Transifex?`)
     this.keytar.addPassword(this.keyForUsername, this.project, username)
     return username
   }
