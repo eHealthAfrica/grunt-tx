@@ -21,10 +21,10 @@ class Credentials {
     this.keytar = keytar
   }
 
-  async askFor(attribute, message) {
+  async askFor(attribute, type, message) {
     const questions = [{
       name: attribute,
-      type: 'input',
+      type: type || 'input',
       message: message,
       validate: isPresent(attribute)
     }]
@@ -61,7 +61,7 @@ class Credentials {
       return password
     }
 
-    password = await this.askFor('password', `What is the password for ${this.project} on Transifex?`)
+    password = await this.askFor('password', 'password', `What is the password for ${this.project} on Transifex?`)
     this.keytar.addPassword(this.keyForPassword, this.project, password)
     return password
   }
