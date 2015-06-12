@@ -11,7 +11,7 @@
   "bugs": {
     "url": "https://github.com/eHealthAfrica/grunt-tx/issues"
   },
-  "license": "Apache 2.0",
+  "license": "Apache-2.0",
   "engines": {
     "node": ">=0.10.0"
   },
