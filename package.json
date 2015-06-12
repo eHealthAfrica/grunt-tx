@@ -3,11 +3,7 @@
   "description": "Grunt tasks to download translations & upload resources from/to Transifex",
   "version": "0.0.0-semantically-released",
   "homepage": "https://github.com/eHealthAfrica/grunt-tx",
-  "author": {
-    "name": "Robin Mehner",
-    "email": "robin@coding-robin.de",
-    "url": "coding-robin.de"
-  },
+  "author": "Robin Mehner <robin@coding-robin.de> (http://coding-robin.de)",
   "repository": {
     "type": "git",
     "url": "git://github.com/eHealthAfrica/grunt-tx.git"
