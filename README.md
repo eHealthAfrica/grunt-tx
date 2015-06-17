@@ -6,8 +6,7 @@ Grunt tasks to download translations and upload resources to [Transifex](https:/
 
 ## Requirements
 
-* node.js `>= 0.10.x`
-* io.js should work as well, we only have to wait for [node-gyp to be compatible](https://github.com/nodejs/io.js/issues/433) (or for the eventual node/io merge)
+* node.js `>= 0.10.x` or io.js `>=1.8.1` (You might need [node-gyp-install](https://www.npmjs.com/package/node-gyp-install) for io.js)
 * grunt `~0.4.5`
 
 ### On Linux
