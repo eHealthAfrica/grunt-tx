@@ -7,11 +7,14 @@ addons:
 node_js:
   - '0.10'
   - '0.12'
+  - 'iojs'
 cache:
   directories:
   - node_modules
 before_install:
   - npm i -g npm@^2.0.0
+  - npm i -g node-gyp-install
+  - node-gyp-install
   - npm config set spin false --global
 before_script:
   - npm prune
