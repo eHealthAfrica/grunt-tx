@@ -2,17 +2,24 @@ language: node_js
 sudo: false
 addons:
   apt:
+    sources:
+      - ubuntu-toolchain-r-test
     packages:
       - libgnome-keyring-dev
+      - g++-4.8
 node_js:
   - '0.10'
   - '0.12'
   - 'iojs'
+  - '4.0'
+  - '4.1'
+  - '4.2'
+  - '5.0'
 cache:
   directories:
-  - node_modules
+    - node_modules
 before_install:
-  - npm i -g npm@^2.0.0
+  - npm i -g npm@^3.0.0
   - npm i -g node-gyp-install
   - node-gyp-install
   - npm config set spin false --global
@@ -31,6 +38,7 @@ after_script:
   - echo leader=$BUILD_LEADER status=$BUILD_AGGREGATE_STATUS
 env:
   global:
+  - CXX=g++-4.8
   - secure: Q5VaKCSXjYqkgf2fl5t+X8WksNBckCyAiWbjHee48DEsaM+fm4w5lfaosxR0E0azmPfzUbMkjChk7ACIUYzpIKvvx4MuV/3q61SS2eT1GxUWbEpnZr4dpfP8EuTLg3l+Ket+o44e22Npxta9nTHoFMPCiOPVveKtzuNaTpJ9YbQi4+wGm0dsa5SKVQ5Wk7CHUHK9S7/UyjVOhX8SB+qsNx8iruZU7h45XnqMole6SNud6opLBNL4eLuVN+fc2ahKOkeuzj921qcmbDEMO4Hi09KcwHVhjVdM6uZ4GAW7UZLL7dkKKhYrQr1HNi8V+4jY/AuNcZ0kYKzQRViY1s8VEbCnEVRifOSJNo7cRlbo3GJ+F6LFsFbAwg6Hysw+BTVxu2ujOniGal8iYzDR6g5SP5BhQE5dMLeKoOq6mOSukpf/fy4oinoMUdSsY2IdxxoBmtHnRk7WE1UH+2/Nm4waYqk8fHI+R5JGSsehOUK6miL9kIfH5hnlN0tU7EVSo1++xIkYr5k8XfHIZ48+/uI2zN/7ly38AmpJyEYZib20fd3ojeG7+41D4JEislGe3kg3mV6DGkeLPArE20c2UcGvTaR9ehnIY9ml8c96e1DkoeWINV06kmXPAEQOXzP3bkabMxu1pKw+TSnxKF0729SWMid+NC9qwZI/owmayspJ048=
 deploy:
   provider: npm

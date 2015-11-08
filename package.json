@@ -46,7 +46,7 @@
   "dependencies": {
     "babel": "^5.5.6",
     "inquirer": "^0.8.5",
-    "keytar": "^2.1.0",
+    "keytar": "^3.0.0",
     "node-fetch": "^1.2.1"
   }
 }
