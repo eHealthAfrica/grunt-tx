@@ -1,12 +1,11 @@
 {
   "name": "grunt-tx",
   "description": "Grunt tasks to download translations & upload resources from/to Transifex",
-  "version": "0.0.0-semantically-released",
   "homepage": "https://github.com/eHealthAfrica/grunt-tx",
   "author": "Robin Mehner <robin@coding-robin.de> (http://coding-robin.de)",
   "repository": {
     "type": "git",
-    "url": "git://github.com/eHealthAfrica/grunt-tx.git"
+    "url": "https://github.com/eHealthAfrica/grunt-tx.git"
   },
   "bugs": {
     "url": "https://github.com/eHealthAfrica/grunt-tx/issues"
@@ -19,10 +18,9 @@
     "build": "npm run clean && babel -d ./ ./src",
     "clean": "rm -Rf ./lib/ ./tasks ./spec/*.js",
     "lint": "eslint ./src/",
-    "postpublish": "semantic-release post",
-    "prepublish": "npm run build && semantic-release pre",
     "test": "npm run lint && npm run build && mocha spec",
-    "watch": "npm run build -- --watch"
+    "watch": "npm run build -- --watch",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "devDependencies": {
     "babel-eslint": "^3.1.14",
@@ -30,7 +28,7 @@
     "eslint": "^0.22.1",
     "grunt": "~0.4.5",
     "mocha": "^2.2.5",
-    "semantic-release": "^3.3.1",
+    "semantic-release": "^4.3.5",
     "sinon": "^1.14.1",
     "source-map-support": "^0.3.1"
   },

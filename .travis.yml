@@ -10,11 +10,16 @@ addons:
 node_js:
   - '0.10'
   - '0.12'
-  - 'iojs'
+  - iojs-v3
+  - iojs-v2
+  - iojs-v1
   - '4.0'
   - '4.1'
   - '4.2'
   - '5.0'
+env:
+  global:
+    - CXX=g++-4.8
 cache:
   directories:
     - node_modules
@@ -25,28 +30,12 @@ before_install:
   - npm config set spin false --global
 before_script:
   - npm prune
-  - curl -Lo travis_after_all.py https://raw.github.com/dmakhno/travis_after_all/master/travis_after_all.py
+  - npm run build
 after_success:
+  - 'curl -Lo travis_after_all.py https://git.io/travis_after_all'
   - python travis_after_all.py
-  - export $(cat .to_export_back)
-after_failure:
-  - python travis_after_all.py
-  - export $(cat .to_export_back)
-before_deploy:
-  - rm -f travis_after_all.py .to_export_back
-after_script:
-  - echo leader=$BUILD_LEADER status=$BUILD_AGGREGATE_STATUS
-env:
-  global:
-  - CXX=g++-4.8
-  - secure: Q5VaKCSXjYqkgf2fl5t+X8WksNBckCyAiWbjHee48DEsaM+fm4w5lfaosxR0E0azmPfzUbMkjChk7ACIUYzpIKvvx4MuV/3q61SS2eT1GxUWbEpnZr4dpfP8EuTLg3l+Ket+o44e22Npxta9nTHoFMPCiOPVveKtzuNaTpJ9YbQi4+wGm0dsa5SKVQ5Wk7CHUHK9S7/UyjVOhX8SB+qsNx8iruZU7h45XnqMole6SNud6opLBNL4eLuVN+fc2ahKOkeuzj921qcmbDEMO4Hi09KcwHVhjVdM6uZ4GAW7UZLL7dkKKhYrQr1HNi8V+4jY/AuNcZ0kYKzQRViY1s8VEbCnEVRifOSJNo7cRlbo3GJ+F6LFsFbAwg6Hysw+BTVxu2ujOniGal8iYzDR6g5SP5BhQE5dMLeKoOq6mOSukpf/fy4oinoMUdSsY2IdxxoBmtHnRk7WE1UH+2/Nm4waYqk8fHI+R5JGSsehOUK6miL9kIfH5hnlN0tU7EVSo1++xIkYr5k8XfHIZ48+/uI2zN/7ly38AmpJyEYZib20fd3ojeG7+41D4JEislGe3kg3mV6DGkeLPArE20c2UcGvTaR9ehnIY9ml8c96e1DkoeWINV06kmXPAEQOXzP3bkabMxu1pKw+TSnxKF0729SWMid+NC9qwZI/owmayspJ048=
-deploy:
-  provider: npm
-  email: oss@ehealthafrica.org
-  skip_cleanup: true
-  api_key:
-    secure: kW/DULOyT+G5foWDmBx5J6xydkm0tgAXyCNdZTQpWz2AfUgUMv2mufwYlYTpdAIRv4zsasanrBdP7Un0p6X5e618iUhaRoLIs4DXdpW6FN/hO6xD0SsQhmhjDcrKF1hWJKTQHDvA/uGp3DyvD5RqxhkaXJgZS/+k5t0C+lgI+/Rdvq1UPtOmxT0LHFd7aEBlCDh1ep9S9MYadzf3jRjZCA3f3nJND4u6llinbKG/96xd63o1dQjel4Y0GmYX95MyXvu9faIkHGD8+vRbuMDfxnSBNnyl+86KgLuDoVCIKEnBddyXJbdhVvAokbbCG+AuwNajx5UI2jt1UBDbBqrzw3pe1j8cvVeoPhbF9DUMSuagOujF741PVVLCxcB15QoEULN0a+uC36kMJUC4DK7S4oNb7sZAKBhXAFo4NOcjyVYNyT65D5vb9gZ2K6F9JW9z6fiOFZFjZtIofV9xRgouG5QSaOcc708LfMB/YhrJniPwNv49UtgUEuBI7o0JW8yt0BaDGnS7FmoiRR4Yp1n/v7qDFrAEI7JuRKz2EW/gL2rF2DbVGOqHis2CVsL6s2GE/rx4XGlw7bU9ApPAxKWp26vfl3dRjo5D6ut75NfH+zkPc3ZAO13naK2aFgWjyUh+gYOTVry4xH6tCaotkf/4Cbz0LhMZW+c53BNrId1eHBU=
-  on:
-    branch: master
-    repo: eHealthAfrica/grunt-tx
-    condition: "$BUILD_LEADER$BUILD_AGGREGATE_STATUS = YESothers_succeeded"
+  - 'export $(cat .to_export_back) &> /dev/null'
+  - npm run semantic-release
+branches:
+  except:
+    - "/^v\\d+\\.\\d+\\.\\d+$/"
