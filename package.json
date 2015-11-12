@@ -42,7 +42,7 @@
     "i18n"
   ],
   "dependencies": {
-    "babel": "^5.5.6",
+    "babel": "^6.1.4",
     "inquirer": "^0.8.5",
     "keytar": "^3.0.0",
     "node-fetch": "^1.2.1"
