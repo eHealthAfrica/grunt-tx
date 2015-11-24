@@ -23,7 +23,7 @@
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "devDependencies": {
-    "babel-eslint": "^3.1.14",
+    "babel-eslint": "^4.1.6",
     "chai": "^3.0.0",
     "eslint": "^0.22.1",
     "grunt": "~0.4.5",
