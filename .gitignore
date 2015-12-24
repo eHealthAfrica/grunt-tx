@@ -1,5 +1,6 @@
 node_modules
 npm-debug.log
-*.js
-!src/**/*.js
+lib/**/*.js
+tasks/**/*.js
+spec/**/*.js
 *.po
