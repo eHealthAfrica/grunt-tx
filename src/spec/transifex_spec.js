@@ -1,3 +1,5 @@
+/* global beforeEach, describe, it */
+
 require('./spec_helper')
 const assert = require('assert')
 const sinon = require('sinon')
@@ -45,10 +47,10 @@ describe('Transifex', () => {
   })
 
   describe('#uploadResource', () => {
-    beforeEach(function() {
+    beforeEach(function () {
       this.fetch = sinon.stub().returns({
         ok: true,
-        json() {
+        json () {
           return {}
         }
       })

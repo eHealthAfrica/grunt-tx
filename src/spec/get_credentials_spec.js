@@ -1,3 +1,5 @@
+/* global beforeEach, describe, it */
+
 require('./spec_helper')
 const assert = require('assert')
 const sinon = require('sinon')

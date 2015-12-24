@@ -1,6 +1,6 @@
 const path = require('path')
 
-const targetPathFor = function(localResource, languageCode) {
+const targetPathFor = function (localResource, languageCode) {
   if (!localResource.targetFilePath) {
     throw new Error(`Please set targetFilePath for ${localResource}`)
   }
@@ -11,11 +11,11 @@ const targetPathFor = function(localResource, languageCode) {
     .replace('_type_', localResource.type.toLowerCase())
 }
 
-const fileNameOf = function(filePath) {
+const fileNameOf = function (filePath) {
   return path.basename(filePath)
 }
 
-const remoteResourceFor = function(localResource, remoteResources) {
+const remoteResourceFor = function (localResource, remoteResources) {
   const fileName = fileNameOf(localResource.sourceFile)
   const remoteResourceForLocal = remoteResources.find(resource => resource.name === fileName)
   if (remoteResourceForLocal) {
@@ -26,21 +26,21 @@ const remoteResourceFor = function(localResource, remoteResources) {
 }
 
 module.exports = class GruntTx {
-  constructor({transifex, project, localResources, grunt}) {
+  constructor ({transifex, project, localResources, grunt}) {
     this.transifex = transifex
     this.project = project
     this.localResources = localResources
     this.grunt = grunt
   }
 
-  async availableLanguageCodesFor(resource) {
+  async availableLanguageCodesFor (resource) {
     const remoteResource = await this.transifex.getResource(resource.slug)
-    return remoteResource.available_languages.map(function(language) {
+    return remoteResource.available_languages.map(function (language) {
       return language.code
     })
   }
 
-  async downloadResources() {
+  async downloadResources () {
     const remoteResources = await this.transifex.getResources()
 
     for (let localResource of this.localResources) {
@@ -62,7 +62,7 @@ module.exports = class GruntTx {
     }
   }
 
-  async uploadResources() {
+  async uploadResources () {
     const remoteResources = await this.transifex.getResources()
 
     for (let localResource of this.localResources) {

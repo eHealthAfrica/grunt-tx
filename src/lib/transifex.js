@@ -1,13 +1,13 @@
 const nodeFetch = require('node-fetch')
 
 module.exports = class Transifex {
-  constructor({username, password, project, fetch = nodeFetch}) {
+  constructor ({username, password, project, fetch = nodeFetch}) {
     this._fetch = fetch
     this.authHeader = 'Basic ' + new Buffer(`${username}:${password}`).toString('base64')
     this.baseUrl = `https://www.transifex.com/api/2/project/${project}`
   }
 
-  async fetch(endpoint, options = {}) {
+  async fetch (endpoint, options = {}) {
     options.headers = options.headers || {}
     options.headers.Authorization = this.authHeader
 
@@ -15,17 +15,17 @@ module.exports = class Transifex {
     return response.ok ? response : Promise.reject(response.statusText)
   }
 
-  async getResources() {
+  async getResources () {
     const response = await this.fetch('resources')
     return await response.json()
   }
 
-  async getResource(resourceSlug) {
+  async getResource (resourceSlug) {
     const response = await this.fetch(`resource/${resourceSlug}/?details`)
     return await response.json()
   }
 
-  async uploadResource(resourceSlug, type, content) {
+  async uploadResource (resourceSlug, type, content) {
     const body = JSON.stringify({
       i18n_type: type, // eslint-disable-line camelcase
       content: content
@@ -45,7 +45,7 @@ module.exports = class Transifex {
     return await response.json()
   }
 
-  async getTranslations(resourceSlug, languageCode) {
+  async getTranslations (resourceSlug, languageCode) {
     const response = await this.fetch(`resource/${resourceSlug}/translation/${languageCode}?file`)
     return await response.text()
   }

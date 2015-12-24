@@ -17,7 +17,7 @@
   "scripts": {
     "build": "npm run clean && babel -d ./ ./src",
     "clean": "rm -Rf ./lib/ ./tasks ./spec/*.js",
-    "lint": "eslint ./src/",
+    "lint": "standard ./src/",
     "test": "npm run lint && npm run build && mocha spec",
     "watch": "npm run build -- --watch",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
@@ -25,12 +25,12 @@
   "devDependencies": {
     "babel-eslint": "^3.1.14",
     "chai": "^3.0.0",
-    "eslint": "^0.22.1",
     "grunt": "~0.4.5",
     "mocha": "^2.2.5",
     "semantic-release": "^4.3.5",
     "sinon": "^1.14.1",
-    "source-map-support": "^0.3.1"
+    "source-map-support": "^0.3.1",
+    "standard": "^5.4.1"
   },
   "peerDependencies": {
     "grunt": "~0.4.5"
@@ -46,5 +46,8 @@
     "inquirer": "^0.8.5",
     "keytar": "^3.0.0",
     "node-fetch": "^1.2.1"
+  },
+  "standard": {
+    "parser": "babel-eslint"
   }
 }

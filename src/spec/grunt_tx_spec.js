@@ -1,3 +1,5 @@
+/* global beforeEach, describe, it */
+
 require('./spec_helper')
 const assert = require('assert')
 const sinon = require('sinon')
@@ -6,7 +8,7 @@ const GruntTx = require('../lib/grunt_tx')
 describe('GruntTx', () => {
   const project = 'grunt-tx-test'
 
-  beforeEach(function() {
+  beforeEach(function () {
     /* eslint-disable camelcase */
     this.transifex = {
       getResources: sinon.stub().returns(

@@ -7,7 +7,7 @@ const GruntTx = require('../lib/grunt_tx')
 const getCredentials = require('../lib/get_credentials')
 
 module.exports = grunt => {
-  const defineTxTask = function(action) {
+  const defineTxTask = function (action) {
     if (['download', 'upload'].indexOf(action) === -1) {
       throw new Error(`Can't define task for '${action}'`)
     }

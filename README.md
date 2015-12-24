@@ -80,7 +80,7 @@ If you follow these three steps, you should be ready to go:
 
 Run `npm run build`. Build output will be in `lib` and `tasks` directories. During development you can also use `npm run watch`, which watches for file changes in `src` and automatically builds everything.
 
-`npm run lint` lints the code in `src` with the help of [eslint](http://eslint.org) and [babel-eslint](https://github.com/babel/babel-eslint)
+`npm run lint` lints the code in `src` with the help of [standard](https://www.npmjs.com/package/standard) and [babel-eslint](https://github.com/babel/babel-eslint)
 
 ### Test
 
