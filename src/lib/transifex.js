@@ -1,4 +1,5 @@
 const nodeFetch = require('node-fetch')
+nodeFetch.Promise = global.Promise || require('bluebird')
 
 module.exports = class Transifex {
   constructor ({username, password, project, fetch = nodeFetch}) {

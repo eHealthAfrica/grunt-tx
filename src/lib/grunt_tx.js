@@ -17,7 +17,7 @@ const fileNameOf = function (filePath) {
 
 const remoteResourceFor = function (localResource, remoteResources) {
   const fileName = fileNameOf(localResource.sourceFile)
-  const remoteResourceForLocal = remoteResources.find(resource => resource.name === fileName)
+  const remoteResourceForLocal = remoteResources.filter(resource => resource.name === fileName)[0]
   if (remoteResourceForLocal) {
     return remoteResourceForLocal
   } else {

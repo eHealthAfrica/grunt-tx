@@ -23,7 +23,11 @@
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "devDependencies": {
+    "babel-cli": "^6.3.17",
     "babel-eslint": "^3.1.14",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-stage-0": "^6.3.13",
+    "babel-plugin-transform-runtime": "^6.3.13",
     "chai": "^3.0.0",
     "grunt": "~0.4.5",
     "mocha": "^2.2.5",
@@ -42,7 +46,8 @@
     "i18n"
   ],
   "dependencies": {
-    "babel": "^5.5.6",
+    "babel-runtime": "^6.3.19",
+    "bluebird": "^3.1.1",
     "inquirer": "^0.8.5",
     "keytar": "^3.0.0",
     "node-fetch": "^1.2.1"

@@ -1,7 +1,6 @@
 // rethrow unhandled promise rejections
 process.on('unhandledRejection', reason => { throw reason })
 
-require('babel/polyfill')
 const Transifex = require('../lib/transifex')
 const GruntTx = require('../lib/grunt_tx')
 const getCredentials = require('../lib/get_credentials')
