@@ -12,8 +12,8 @@ const isPresent = function (attribute) {
 }
 
 class Credentials {
-  keyForUsername = 'grunt-tx:username'
-  keyForPassword = 'grunt-tx:password'
+  keyForUsername = 'grunt-tx:username';
+  keyForPassword = 'grunt-tx:password';
 
   constructor ({project, inquirer = nodeInquirer, keytar = nodeKeytar}) {
     this.project = project
