@@ -34,7 +34,7 @@
     "semantic-release": "^4.3.5",
     "sinon": "^1.14.1",
     "source-map-support": "^0.4.0",
-    "standard": "^5.4.1"
+    "standard": "^6.0.0"
   },
   "peerDependencies": {
     "grunt": "~0.4.5"
